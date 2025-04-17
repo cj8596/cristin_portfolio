@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cristin Johnson | Java Developer & Educator</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #4361ee;
       --dark: #1b263b;
       --light: #f8f9fa;
       --accent: #f72585;
+      --gray: #6c757d;
     }
     
     body {
@@ -19,52 +20,177 @@
       line-height: 1.6;
       background: var(--light);
       color: var(--dark);
+      margin: 0;
+      padding: 0;
     }
     
     header {
-      background: var(--dark);
+      background: linear-gradient(135deg, var(--dark), #2a3a5a);
       color: white;
-      padding: 4rem 0;
+      padding: 5rem 0;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
+      opacity: 0.15;
+      z-index: 0;
     }
     
     header h1 { 
-      font-size: 2.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
       margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
     }
     
     nav {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
+      position: relative;
+      z-index: 1;
     }
     
     nav a {
       color: white;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
     }
     
     .section-title {
       text-align: center;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       margin-bottom: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+    
+    .card .date {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    
+    .skill-tag {
+      background: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .contact-links a {
+      color: var(--dark);
+      font-size: 2rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .contact-links a:hover {
+      color: var(--accent);
+      transform: scale(1.1);
+    }
+    
+    .experience-item {
+      margin-bottom: 2rem;
+    }
+    
+    .experience-item h3 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .experience-item .company {
+      font-weight: 600;
       color: var(--primary);
     }
     
-    .project-card, .publication-card {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      margin-bottom: 1.5rem;
+    .experience-item .date {
+      color: var(--gray);
+      font-size: 0.9rem;
     }
     
-    /* Fixed: Social media links now visible */
-    .contact-links a {
-      color: white;
-      font-size: 1.5rem;
-      margin: 0 10px;
+    .experience-item ul {
+      padding-left: 1.5rem;
+    }
+    
+    .experience-item li {
+      margin-bottom: 0.5rem;
     }
     
     footer {
@@ -72,60 +198,229 @@
       color: white;
       text-align: center;
       padding: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background: #3a56d4;
+      transform: translateY(-2px);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .summary {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Cristin Johnson</h1>
-    <p>Java Developer | Spring Boot Expert | Educator</p>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#publications">Research</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container">
+      <h1>Cristin Johnson</h1>
+      <p>Java Developer | Spring Boot Expert | Educator</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Research</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <section id="projects">
-    <h2 class="section-title">Projects</h2>
-    <div class="project-card">
-      <h3>College Website (NKC)</h3>
-      <p>Enhanced departmental content and developed HTML templates for Nagindas Khandwala College.</p>
-    </div>
-    <div class="project-card">
-      <h3>Operations Module (Sarvagram)</h3>
-      <p>Java Spring Boot backend for financial apps, delivered 20% ahead of schedule.</p>
-    </div>
-  </section>
+  <div class="container">
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="summary">
+        <p>Results-driven <span class="highlight">Java Developer</span> with 2+ years of experience in designing scalable backend solutions using Java, Spring Boot, and MySQL. Currently an <span class="highlight">Assistant Professor</span>, teaching computer science and mentoring students in cybersecurity and software development. Passionate about continuous learning and delivering innovative solutions.</p>
+        <p>Available to join and contribute to the organization within 15 days.</p>
+        <a href="#contact" class="btn" style="margin-top: 1rem;">Get in Touch</a>
+      </div>
+    </section>
 
-  <section id="publications">
-    <h2 class="section-title">Research Publications</h2>
-    <div class="publication-card">
-      <h3>The Evolution and Effectiveness of Malware Analysis Tools</h3>
-      <p>Published in JETIR (ISSN: 2349-5162)</p>
-    </div>
-    <div class="publication-card">
-      <h3>Security and Countermeasures against De-authentication Attacks</h3>
-      <p>Published in JETIR (ISSN: 2349-5162)</p>
-    </div>
-  </section>
+    <section id="experience">
+      <h2 class="section-title">Professional Experience</h2>
+      
+      <div class="card experience-item">
+        <h3>Assistant Professor</h3>
+        <div class="company">Nagindas Khandwala College | Mumbai</div>
+        <div class="date">Sept 2024 – April 2025</div>
+        <ul>
+          <li>Teach BSc/MSc Computer Science courses: Python Coding, IT Governance, Risk, Compliance and Cybersecurity.</li>
+          <li>Conducted vulnerability scanning and GitHub practicals for MSc students.</li>
+          <li><strong>Mentored 2</strong> MSc research projects and guided TY BSc students in internships.</li>
+          <li><strong>Enhanced</strong> college website: Developed templates, added HTML pages, and organized departmental content.</li>
+        </ul>
+      </div>
+      
+      <div class="card experience-item">
+        <h3>Software Developer</h3>
+        <div class="company">Sarvagram Solutions Pvt. Ltd. | Pune</div>
+        <div class="date">June 2022 – Nov 2023</div>
+        <ul>
+          <li><strong>Developed 3</strong> Java-based <strong>Spring Boot</strong> backend solutions for financial apps, achieving 98% bug-free rate and delivering projects 20% ahead of schedule.</li>
+          <li>Integrated AWS S3 for secure document storage and collaborated across 3 teams for data management using Spring MVC, Hibernate, and JPA.</li>
+        </ul>
+      </div>
+      
+      <div class="card experience-item">
+        <h3>Web Development Intern</h3>
+        <div class="company">Sarvagram Solutions Pvt. Ltd. | Pune</div>
+        <div class="date">Nov 2021 – May 2022</div>
+        <ul>
+          <li>Assisted in developing 5 financial web apps, achieving 95% user satisfaction.</li>
+        </ul>
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2 class="section-title">Contact</h2>
-    <div style="text-align: center;">
-      <!-- Fixed: Visible social links -->
-      <a href="mailto:cristinjohnson96@gmail.com" class="contact-links">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="https://linkedin.com/in/yourprofile" class="contact-links">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://github.com/yourusername" class="contact-links">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-  </section>
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      
+      <div class="card">
+        <h3>College Website (NKC)</h3>
+        <div class="date">2025</div>
+        <p>Enhanced departmental content and developed HTML templates for Nagindas Khandwala College.</p>
+        <div class="skills-container" style="margin-top: 1rem;">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">Content Creation</span>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3>Operations Module (Sarvagram)</h3>
+        <div class="date">2022 – 2023</div>
+        <p>Java Spring Boot backend for financial apps, delivered 20% ahead of schedule with 98% bug-free rate.</p>
+        <div class="skills-container" style="margin-top: 1rem;">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Spring Boot</span>
+          <span class="skill-tag">Hibernate</span>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3>Karza OCR Integration</h3>
+        <div class="date">2022</div>
+        <p>Implemented OCR functionality for document processing in financial applications.</p>
+        <div class="skills-container" style="margin-top: 1rem;">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">API Integration</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2 class="section-title">Research Publications</h2>
+      
+      <div class="card">
+        <h3>The Evolution and Effectiveness of Malware Analysis Tools</h3>
+        <p>Published in JETIR (ISSN: 2349-5162)</p>
+        <a href="http://www.jetir.org/view?paper=JETIR2502513" class="btn btn-outline" style="margin-top: 1rem;">View Publication</a>
+      </div>
+      
+      <div class="card">
+        <h3>Security and Countermeasures against De-authentication Attacks</h3>
+        <p>Published in JETIR (ISSN: 2349-5162)</p>
+        <a href="http://www.jetir.org/view?paper=JETIR2502464" class="btn btn-outline" style="margin-top: 1rem;">View Publication</a>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="card">
+        <div class="skills-container">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Spring Boot</span>
+          <span class="skill-tag">Hibernate</span>
+          <span class="skill-tag">JPA</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">PHP</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">AWS S3</span>
+          <span class="skill-tag">RESTful APIs</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">Vulnerability Scanning</span>
+          <span class="skill-tag">HTML/CSS</span>
+          <span class="skill-tag">Mentorship</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="card" style="text-align: center;">
+        <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Let's connect and discuss opportunities!</p>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <p><i class="fas fa-phone"></i> +91 8097114279</p>
+          <p><i class="fas fa-envelope"></i> cristinjohnson96@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra</p>
+        </div>
+        
+        <div class="contact-links">
+          <a href="mailto:cristinjohnson96@gmail.com">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://linkedin.com/in/yourprofile" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/yourusername" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        
+        <a href="mailto:cristinjohnson96@gmail.com" class="btn" style="margin-top: 1.5rem;">Send Email</a>
+      </div>
+    </section>
+  </div>
 
   <footer>
     <p>© 2024 Cristin Johnson. All rights reserved.</p>
